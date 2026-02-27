@@ -1,4 +1,18 @@
 export const kGamesFeatures = new Map<number, string[]>([
+  // Rocket League
+  [
+    10798,
+    [
+      "stats",
+      "match",
+      "roster",
+      "me",
+      "match_info",
+      "death",
+      "game_info",
+      "training",
+    ]
+  ],
   // Fortnite
   [
     21216,

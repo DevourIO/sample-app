@@ -8,6 +8,7 @@ import { AppWindow } from "../AppWindow";
 import { kHotkeys, kWindowNames, kGamesFeatures } from "../consts";
 
 import WindowState = overwolf.windows.WindowStateEx;
+import {conditionallyRenderDevourIframe} from "@devour/overwolf-sdk";
 
 // The window displayed in-game while a game is running.
 // It listens to all info events and to the game events listed in the consts.ts file
@@ -19,12 +20,17 @@ class InGame extends AppWindow {
   private _gameEventsListener: OWGamesEvents;
   private _eventsLog: HTMLElement;
   private _infoLog: HTMLElement;
+  private _devourIframe: HTMLElement;
 
   private constructor() {
     super(kWindowNames.inGame);
 
     this._eventsLog = document.getElementById('eventsLog');
     this._infoLog = document.getElementById('infoLog');
+    this._devourIframe = document.getElementById('devourIframe');
+    conditionallyRenderDevourIframe().then(devourIframe => {
+      this._devourIframe?.appendChild(devourIframe);
+    });
 
     this.setToggleHotkeyBehavior();
     this.setToggleHotkeyText();

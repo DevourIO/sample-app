@@ -82,6 +82,7 @@
     "game_targeting": {
       "type": "dedicated",
       "game_ids": [
+        10798,
         21216,
         7764,
         5426,
@@ -99,6 +100,7 @@
       ]
     },
     "game_events": [
+      10798,
       21216,
       7764,
       5426,
@@ -119,6 +121,7 @@
         "event": "GameLaunch",
         "event_data": {
           "game_ids": [
+            10798,
             21216,
             7764,
             5426,

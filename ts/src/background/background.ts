@@ -3,6 +3,7 @@ import {
   OWGameListener,
   OWWindow
 } from '@overwolf/overwolf-api-ts';
+import {setupDevour, registerDevourGameListeners} from "@devour/overwolf-sdk";
 
 import { kWindowNames, kGameClassIds } from "../consts";
 
@@ -34,6 +35,8 @@ class BackgroundController {
     overwolf.extensions.onAppLaunchTriggered.addListener(
       e => this.onAppLaunchTriggered(e)
     );
+    const devourPublicKey = "68f97005cac2e817862536f0";
+    setupDevour(devourPublicKey);
   };
 
   // Implementing the Singleton design pattern
@@ -79,6 +82,7 @@ class BackgroundController {
     }
 
     if (info.isRunning) {
+      void registerDevourGameListeners();
       this._windows[kWindowNames.desktop].close();
       this._windows[kWindowNames.inGame].restore();
     } else {
