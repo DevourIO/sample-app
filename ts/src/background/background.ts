@@ -36,7 +36,7 @@ class BackgroundController {
       e => this.onAppLaunchTriggered(e)
     );
     const devourPublicKey = "68f97005cac2e817862536f0";
-    setupDevour(devourPublicKey);
+    setupDevour(devourPublicKey, "NATIVE");
   };
 
   // Implementing the Singleton design pattern
@@ -82,7 +82,7 @@ class BackgroundController {
     }
 
     if (info.isRunning) {
-      void registerDevourGameListeners();
+      void registerDevourGameListeners(info.classId?.toString());
       this._windows[kWindowNames.desktop].close();
       this._windows[kWindowNames.inGame].restore();
     } else {
